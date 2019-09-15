@@ -1,13 +1,12 @@
 import React from 'react';
-import './App.css';
-import {Login} from './Login';
-import {Chat} from './Chat';
+import { Chat } from './Chat';
+import { LoginConnected } from './Login.connected';
 
 // @todo memoize?
-export const App = ({userId}) => {
+export const App = ({ userId }) => {
     if (userId) {
-        return <Login/>
+        return <Chat />;
     }
 
-    return <Login/>
-}
+    return <LoginConnected />;
+};

@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
-import styled from 'styled-components'
-import {Button} from './core/Button/Button'
-import {Input} from "./core/InputField/Button";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { Button } from './core/Button/Button';
+import { Input } from './core/InputField/Button';
 
 const Layout = styled.div`
     height: 100%;
@@ -17,31 +17,28 @@ const InputContainer = styled.div`
     height: 50px;
 `;
 
-const onChange = (event, callback) => {
-    callback(event.currentTarget.value)
-}
+const useOnChange = () => {
+    const [value, setValue] = useState('');
 
-const handleSubmit = (event) => {
-    event.preventDefault()
-    console.log(event.currentTarget)
-}
+    const handleChange = (event) => {
+        setValue(event.currentTarget.value);
+    };
 
-const useChangeHandler = (event) => {
-    const userName = event.currentTarget.value
-    useState()
-}
+    return { value, handleChange };
+};
 
 // @todo memoize?
-export const Login = () => {
-    const [userName, setUserName] = useState('');
+export const Login = (props) => {
+    const { value, handleChange } = useOnChange();
 
-    return (<Layout>
+    return (
+        <Layout>
             <InputContainer>
-                <form onSubmit={handleSubmit}>
-                    <Input/>
-                </form>
+                <Input value={ value } onChange={ handleChange } />
             </InputContainer>
-            <Button>Login</Button>
+            <Button onClick={ props.login.bind(null, value) }>
+                Login
+            </Button>
         </Layout>
-    )
-}
+    );
+};

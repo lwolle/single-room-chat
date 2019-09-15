@@ -1,24 +1,27 @@
-import React from 'react'
-import {Provider} from 'react-redux'
-import {store} from "./ducks/store";
-import {AppConnected} from "./App.connected";
-import {createGlobalStyle} from "styled-components";
+import React from 'react';
+import { Provider } from 'react-redux';
+import { store } from "./ducks/store";
+import { AppConnected } from "./App.connected";
+import { createGlobalStyle } from "styled-components";
+
 const GlobalStyle = createGlobalStyle`
-  html {
-    height: 100%;
-  }
-  body {
-    height: 100%;
-  }
+    html {
+        height: 100%;
+    }
+
+    body {
+        height: 100%;
+        margin: 0;
+    }
   
-  #root {
-      height: 100%;
-  }
+    #root {
+        height: 100%;
+    }
 `;
 
 export const Root = () => (
-    <Provider store={store}>
-        <GlobalStyle/>
-        <AppConnected/>
+    <Provider store={ store }>
+        <GlobalStyle />
+        <AppConnected />
     </Provider>
-)
+);

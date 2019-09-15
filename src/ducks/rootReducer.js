@@ -1,11 +1,13 @@
 import reduceReducers from 'reduce-reducers';
+import { reducer as loginReducer } from './login';
 
 const initialState = {
-    userId: 'hannes',
+    userId: '',
     userName: '',
 };
 
 export const rootReducer = reduceReducers(
-    initialState
+    initialState,
+    loginReducer,
 );
 

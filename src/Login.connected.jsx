@@ -1,8 +1,9 @@
-import {connect} from 'react-redux'
-import {Login} from './Login'
-import {login} from './ducks/login'
-const mapDispatchToProps = {
-    login
-}
+import { connect } from 'react-redux';
+import { Login } from './Login';
+import { login } from './ducks/login';
 
-export const LoginConnected = connect(null, mapDispatchToProps)(Login)
+const mapDispatchToProps = {
+    login,
+};
+
+export const LoginConnected = connect(null, mapDispatchToProps)(Login);
