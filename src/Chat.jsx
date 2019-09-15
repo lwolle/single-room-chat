@@ -1,1 +1,1 @@
-export const Chat = (props) => 'Chat'
+export const Chat = () => 'Chat';

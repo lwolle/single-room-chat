@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Button } from './core/Button/Button';
-import { Input } from './core/InputField/Button';
+import { Button } from 'src/core/Button/Button';
+import { Input } from 'src/core/InputField/InputField';
 
 const Layout = styled.div`
     height: 100%;
@@ -28,7 +28,7 @@ const useOnChange = () => {
 };
 
 // @todo memoize?
-export const Login = (props) => {
+export const Login = ({ login }) => {
     const { value, handleChange } = useOnChange();
 
     return (
@@ -36,7 +36,8 @@ export const Login = (props) => {
             <InputContainer>
                 <Input value={ value } onChange={ handleChange } />
             </InputContainer>
-            <Button onClick={ props.login.bind(null, value) }>
+            { /* eslint-disable react/jsx-no-bind */ }
+            <Button onClick={ login.bind(null, value) }>
                 Login
             </Button>
         </Layout>
