@@ -1,5 +1,5 @@
 import reduceReducers from 'reduce-reducers';
-import { reducer as loginReducer } from './login';
+import { reducer as loginReducer } from './setUser';
 
 const initialState = {
     userId: '',
