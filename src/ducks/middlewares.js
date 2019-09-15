@@ -1,0 +1,1 @@
+export const loggerMiddleware = (action, state, next) => {}
