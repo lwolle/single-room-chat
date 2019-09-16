@@ -1,4 +1,5 @@
 {
+  "main": "src/ChatApp/Root/index.jsx",
   "name": "chat-app",
   "version": "0.1.0",
   "private": true,

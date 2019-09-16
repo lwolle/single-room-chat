@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { Login } from '../Login/Login';
+import { Login } from './Login';
 import { login } from '../ducks/login';
 
 const mapDispatchToProps = {

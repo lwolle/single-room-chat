@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Layout } from './Layout';
 import { InputContainer } from './InputContainer';
-import { Button } from '../core/Button/Button';
-import { Input } from '../core/InputField/InputField';
+import { Button } from '../../core/Button/Button';
+import { Input } from '../../core/InputField/InputField';
 
 const useOnChange = () => {
     const [value, setValue] = useState('');

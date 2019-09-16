@@ -1,8 +1,8 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow } from 'enzyme/build';
 import { LoginConnected } from './Login.connected';
 import { login } from '../ducks/login';
-import { mockStore } from '../testHelper/mockStore';
+import { mockStore } from '../../testHelper/mockStore';
 
 describe('Login/LoginConnected', () => {
     it('should bind login', () => {

@@ -2,9 +2,9 @@ import React from 'react';
 import { Login } from './Login';
 import { Layout } from './Layout';
 import { InputContainer } from './InputContainer';
-import { Button } from '../core/Button/Button';
-import { Input } from '../core/InputField/InputField';
-import { shallow } from 'enzyme';
+import { Button } from '../../core/Button/Button';
+import { Input } from '../../core/InputField/InputField';
+import { shallow } from 'enzyme/build';
 
 describe('Login', () => {
     const login = () => {
