@@ -1,5 +1,3 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Root } from './Root';
+import { bootstrap } from './ChatApp/Root';
 
-ReactDOM.render(<Root />, document.getElementById('root'));
+bootstrap()
