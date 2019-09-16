@@ -11,7 +11,7 @@ export const reducer = (state, action) => {
         case ActionType.SET_USER:
             return {
                 ...state,
-                userId: 'asd',
+                userId: action.userId,
                 userName: action.userName,
             };
         default:
