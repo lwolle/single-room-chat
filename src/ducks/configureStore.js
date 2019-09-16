@@ -3,7 +3,6 @@ import {
     compose,
     createStore,
 } from 'redux';
-
 import thunk from 'redux-thunk';
 import { rootReducer } from './rootReducer';
 import { api } from './api';
