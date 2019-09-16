@@ -18,8 +18,23 @@ describe('Login/LoginConnected', () => {
                 userId: 'the-id',
             },
         };
+
+        const fakeGetMessagesResponse = {
+            ok: true,
+            body: {
+                messages: [
+                    {
+                        id: 1,
+                        creatorId: 2,
+                        text: 'the-message',
+                    },
+                ],
+            },
+        };
+
         const fakeApi = {
             login: jest.fn(() => fakeResponse),
+            getMessages: jest.fn(() => fakeGetMessagesResponse),
         };
 
         const store = mockStore(null, { api: fakeApi });

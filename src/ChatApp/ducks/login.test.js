@@ -9,6 +9,18 @@ const fakeApi = {
             userId: 'user-id',
         },
     })),
+    getMessages: jest.fn(() => ({
+        ok: true,
+        body: {
+            messages: [
+                {
+                    id: 1,
+                    creatorId: 2,
+                    text: 'the-message',
+                },
+            ],
+        },
+    })),
 };
 describe('login', () => {
     it('should call api.login', () => {
