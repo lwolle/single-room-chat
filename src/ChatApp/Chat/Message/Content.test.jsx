@@ -1,6 +1,6 @@
+import React from 'react';
 import { mount } from 'enzyme/build';
 import { Content } from './Content';
-import React from 'react';
 
 describe('Chat/Message/Content', () => {
     it('should render', () => {

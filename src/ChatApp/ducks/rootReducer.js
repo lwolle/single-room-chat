@@ -11,6 +11,6 @@ export const initialState = {
 export const rootReducer = reduceReducers(
     initialState,
     setUserReducer,
-    setMessagesReducer
+    setMessagesReducer,
 );
 

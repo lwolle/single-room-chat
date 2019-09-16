@@ -7,7 +7,6 @@ describe('ducks/setMessages', () => {
 
     describe('action creator', () => {
         it('should create action', () => {
-
             const expected = {
                 type: ActionType.SET_MESSAGES,
                 messages,
