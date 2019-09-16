@@ -1,0 +1,12 @@
+{
+  "collectCoverageFrom": [
+    "src/**/*.{js,jsx}"
+  ],
+  "snapshotSerializers": [
+    "enzyme-to-json/serializer"
+  ],
+  ,,
+  "setupFilesAfterEnv": [
+    "./setupTests.js"
+  ]
+}
