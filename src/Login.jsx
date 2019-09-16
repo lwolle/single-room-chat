@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Button } from 'src/core/Button/Button';
-import { Input } from 'src/core/InputField/InputField';
+import { Button } from './core/Button/Button';
+import { Input } from './core/InputField/InputField';
 
 const Layout = styled.div`
     height: 100%;
