@@ -1,9 +1,10 @@
 import reduceReducers from 'reduce-reducers';
 import { reducer as setUserReducer } from './setUser';
 
-const initialState = {
+export const initialState = {
     userId: '',
     userName: '',
+    messages: [],
 };
 
 export const rootReducer = reduceReducers(

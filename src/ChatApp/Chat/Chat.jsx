@@ -1,17 +1,20 @@
 import React from 'react';
 import { Message } from './Message/Message';
+import { Layout } from './Layout';
 
-const renderMessages = (messages) => (
+const renderMessages = (messages, userId) => (
     messages.map(message => (
         <Message
             key={ message.id }
             text={ message.text }
-            isMyMessage={ message.creatorId === 'me' }
+            isMine={ message.creatorId === userId }
         />))
 );
 
-export const Chat = React.memo((messages) => (
+export const Chat = React.memo(({ messages, userId }) => (
     <React.Fragment>
-        { renderMessages(messages) }
+        <Layout>
+            { renderMessages(messages, userId) }
+        </Layout>
     </React.Fragment>
 ));
