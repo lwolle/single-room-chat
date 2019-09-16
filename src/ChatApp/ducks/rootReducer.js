@@ -1,5 +1,6 @@
 import reduceReducers from 'reduce-reducers';
 import { reducer as setUserReducer } from './setUser';
+import { reducer as setMessagesReducer } from './setMessages';
 
 export const initialState = {
     userId: '',
@@ -10,5 +11,6 @@ export const initialState = {
 export const rootReducer = reduceReducers(
     initialState,
     setUserReducer,
+    setMessagesReducer
 );
 

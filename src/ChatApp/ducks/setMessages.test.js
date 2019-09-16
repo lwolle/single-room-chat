@@ -1,40 +1,32 @@
-import {
-    setUser,
-    reducer,
-} from './setUser';
 import { ActionType } from './ActionType';
 import { rootReducer } from './rootReducer';
+import { setMessages, reducer } from './setMessages';
 
-describe('ducks/setUser', () => {
+describe('ducks/setMessages', () => {
+    const messages = ['message1', 'message2'];
+
     describe('action creator', () => {
         it('should create action', () => {
-            const userName = 'name';
-            const userId = 'id';
 
             const expected = {
-                type: ActionType.SET_USER,
-                userName: 'name',
-                userId: 'id',
+                type: ActionType.SET_MESSAGES,
+                messages,
             };
 
-            const action = setUser(userId, userName);
+            const action = setMessages(messages);
 
             expect(action).toEqual(expected);
         });
     });
 
     describe('reducer', () => {
-        const userName = 'name';
-        const userId = 'id';
-
         const assertReducerResult = (newState) => {
-            expect(newState).toHaveProperty('userName', userName);
-            expect(newState).toHaveProperty('userId', userId);
+            expect(newState).toHaveProperty('messages', messages);
         };
 
         it('subreducer should set data on state', () => {
             const state = {};
-            const action = setUser(userId, userName);
+            const action = setMessages(messages);
 
             const newState = reducer(state, action);
             assertReducerResult(newState);
@@ -42,7 +34,7 @@ describe('ducks/setUser', () => {
 
         it('appreducer should set data on state', () => {
             const state = {};
-            const action = setUser(userId, userName);
+            const action = setMessages(messages);
 
             const newState = rootReducer(state, action);
             assertReducerResult(newState);
