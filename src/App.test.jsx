@@ -1,9 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { Root } from './Root';
+import { App } from './App';
+import { shallow } from 'enzyme';
+import { Chat } from './Chat';
+import { LoginConnected } from './Login/Login.connected';
 
-it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<Root />, div);
-    ReactDOM.unmountComponentAtNode(div);
+describe('App', () => {
+    it('should render Login', () => {
+        const root = shallow(<App />);
+        expect(root.find(LoginConnected)).toExist()
+    });
+
+    it('should render Chat', () => {
+        const root = shallow(<App userId="user-id" />);
+        expect(root.find(Chat)).toExist()
+    });
 });
