@@ -1,3 +1,3 @@
 export const ActionType = {
-    LOGIN: 'chat/LOGIN'
+    SET_USER: 'chat/SET_USER',
 };

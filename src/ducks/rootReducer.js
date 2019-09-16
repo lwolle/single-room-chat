@@ -1,5 +1,5 @@
 import reduceReducers from 'reduce-reducers';
-import { reducer as loginReducer } from './login';
+import { reducer as setUserReducer } from './setUser';
 
 const initialState = {
     userId: '',
@@ -8,6 +8,6 @@ const initialState = {
 
 export const rootReducer = reduceReducers(
     initialState,
-    loginReducer,
+    setUserReducer,
 );
 

@@ -1,19 +1,10 @@
-import { ActionType } from "./ActionType";
+import { setUser } from './setUser';
 
-export const login = (userName) => ({
-    type: ActionType.LOGIN,
-    userName,
-});
+export const login = (userName) => async (dispatch, getState, { api }) => {
+    const response = await api.login(userName);
 
-export const reducer = (state, action) => {
-    switch (action.type) {
-        case ActionType.LOGIN:
-            return {
-                ...state,
-                userId: 'asd',
-                userName: action.userName,
-            };
-        default:
-            return state;
+    if (response.ok) {
+        const { userId } = response.body;
+        dispatch(setUser(userId, userName));
     }
 };

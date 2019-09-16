@@ -1,21 +1,8 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
-import { Button } from './core/Button/Button';
-import { Input } from './core/InputField/Button';
-
-const Layout = styled.div`
-    height: 100%;
-    display: flex;
-    flex-flow: column nowrap;
-    background: rgb(14,74,163);
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-`;
-
-const InputContainer = styled.div`
-    height: 50px;
-`;
+import { Layout } from './Layout';
+import { InputContainer } from './InputContainer';
+import { Button } from '../core/Button/Button';
+import { Input } from '../core/InputField/InputField';
 
 const useOnChange = () => {
     const [value, setValue] = useState('');
@@ -28,7 +15,7 @@ const useOnChange = () => {
 };
 
 // @todo memoize?
-export const Login = (props) => {
+export const Login = ({ login }) => {
     const { value, handleChange } = useOnChange();
 
     return (
@@ -36,7 +23,8 @@ export const Login = (props) => {
             <InputContainer>
                 <Input value={ value } onChange={ handleChange } />
             </InputContainer>
-            <Button onClick={ props.login.bind(null, value) }>
+            { /* eslint-disable react/jsx-no-bind */ }
+            <Button onClick={ login.bind(null, value) }>
                 Login
             </Button>
         </Layout>
