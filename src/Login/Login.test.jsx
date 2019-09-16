@@ -38,4 +38,29 @@ describe('Login', () => {
             expect(inputAfterUpdate).toHaveProp('value', 'user-name');
         });
     });
+
+    describe('Button', () => {
+        it('should be rendered', () => {
+            const root = shallow(<Login login={ login } />);
+
+            expect(root.find(Button)).toExist();
+        });
+
+        it('should call props.login with input value', () => {
+            const login = jest.fn();
+
+            const root = shallow(<Login login={ login } />);
+
+            const fakeEvent = {
+                currentTarget: {
+                    value: 'user-name',
+                },
+            };
+
+            root.find(Input).simulate('change', fakeEvent);
+
+            root.find(Button).simulate('click');
+            expect(login).toHaveBeenCalledWith('user-name');
+        });
+    });
 });
