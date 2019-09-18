@@ -10,10 +10,10 @@ describe('Chat/Message', () => {
 
         const container = root.find(Container);
         expect(container).toExist();
-        expect(container).toHaveProp('isMine', true);
 
         const content = root.find(Content)
         expect(content).toExist();
+        expect(content).toHaveProp('isMine', true);
         expect(content).toHaveProp('children', 'the-message');
     });
 });

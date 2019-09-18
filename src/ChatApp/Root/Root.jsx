@@ -7,6 +7,7 @@ import { AppConnected } from './App.connected';
 const GlobalStyle = createGlobalStyle`
     html {
         height: 100%;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
     }
 
     body {

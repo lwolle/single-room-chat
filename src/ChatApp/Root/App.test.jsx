@@ -1,7 +1,7 @@
 import React from 'react';
 import { App } from './App';
 import { shallow } from 'enzyme';
-import { Chat } from '../Chat/Chat';
+import { ChatConnected } from '../Chat/Chat.connected';
 import { LoginConnected } from '../Login/Login.connected';
 
 describe('App', () => {
@@ -12,6 +12,6 @@ describe('App', () => {
 
     it('should render Chat', () => {
         const root = shallow(<App userId="user-id" />);
-        expect(root.find(Chat)).toExist()
+        expect(root.find(ChatConnected)).toExist()
     });
 });

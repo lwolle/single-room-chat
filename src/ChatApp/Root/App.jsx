@@ -1,11 +1,11 @@
 import React from 'react';
-import { Chat } from '../Chat/Chat';
+import { ChatConnected } from '../Chat/Chat.connected';
 import { LoginConnected } from '../Login/Login.connected';
 
 // @todo memoize?
 export const App = ({ userId }) => {
     if (userId) {
-        return <Chat />;
+        return <ChatConnected />;
     }
 
     return <LoginConnected />;
