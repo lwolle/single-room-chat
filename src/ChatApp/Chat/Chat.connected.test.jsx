@@ -1,7 +1,7 @@
-import { mockStore } from '../../testHelper/mockStore';
-import { ChatConnected } from './Chat.connected';
 import React from 'react';
 import { shallow } from 'enzyme';
+import { mockStore } from '../../testHelper/mockStore';
+import { ChatConnected } from './Chat.connected';
 import { diveTimes } from '../../testHelper/diveTimes';
 import { sendMessage } from '../ducks/sendMesage';
 
