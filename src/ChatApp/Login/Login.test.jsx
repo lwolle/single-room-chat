@@ -1,16 +1,16 @@
 import React from 'react';
+import { shallow } from 'enzyme';
 import { Login } from './Login';
 import { Layout } from './Layout';
 import { InputContainer } from './InputContainer';
 import { Button } from '../../core/Button/Button';
 import { Input } from '../../core/InputField/InputField';
-import { shallow } from 'enzyme/build';
 
 describe('Login', () => {
-    const login = () => {
+    const loginStub = () => {
     };
     it('should render', () => {
-        const root = shallow(<Login login={ login } />);
+        const root = shallow(<Login login={ loginStub } />);
 
         expect(root.find(Layout)).toExist();
         expect(root.find(InputContainer)).toExist();
@@ -18,13 +18,13 @@ describe('Login', () => {
 
     describe('Input', () => {
         it('should be rendered', () => {
-            const root = shallow(<Login login={ login } />);
+            const root = shallow(<Login login={ loginStub } />);
 
             expect(root.find(Input)).toExist();
         });
 
         it('update on change', () => {
-            const root = shallow(<Login login={ login } />);
+            const root = shallow(<Login login={ loginStub } />);
             const input = root.find(Input);
 
             const fakeEvent = {
@@ -41,7 +41,7 @@ describe('Login', () => {
 
     describe('Button', () => {
         it('should be rendered', () => {
-            const root = shallow(<Login login={ login } />);
+            const root = shallow(<Login login={ loginStub } />);
 
             expect(root.find(Button)).toExist();
         });

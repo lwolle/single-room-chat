@@ -11,6 +11,6 @@ export const mockStore = (
         ...additionalMiddleware,
     ];
 
-    const mockStore = configureMockStore(middleware);
-    return mockStore(initialState);
+    const mock = configureMockStore(middleware);
+    return mock(initialState);
 };
