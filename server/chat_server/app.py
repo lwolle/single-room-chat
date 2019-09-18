@@ -1,10 +1,11 @@
 from flask import Flask, request, Response, make_response
-from uuid import uuid4
-
+from flask_cors import CORS
+from server.chat_server.model.user import user_model
 
 def create_app(config):
-    app = Flask(__name__)
-    return app
+    appa = Flask(__name__)
+    CORS(appa, support_credentials=True)
+    return appa
 
 
 app = create_app('')
@@ -15,19 +16,14 @@ messages = [{"id": 1, "text": "the text"}, {"id": 2, "text": "the text"}]
 def login():
     try:
         user_name = request.json['userName']
-        user_id = uuid4()
+        user = user_model.add(user_name)
+        print('aasdasd',user)
         status_code = 200
     except (TypeError, KeyError):
-        user_name = None
-        user_id = None
+        user = None
         status_code = 400
 
-    body = {
-        "userName": user_name,
-        "userId": user_id,
-    }
-
-    return make_response(body, status_code)
+    return make_response(user, status_code)
 
 
 @app.route('/api/messages', methods=['GET'])
