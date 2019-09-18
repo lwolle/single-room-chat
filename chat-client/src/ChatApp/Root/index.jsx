@@ -4,5 +4,5 @@ import { Root } from './Root';
 
 export const bootstrap = () => {
     ReactDOM.render(<Root />, document.getElementById('root'));
-}
+};
 

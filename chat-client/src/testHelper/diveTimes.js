@@ -1,4 +1,4 @@
-export const diveTimes = x => (root) => {
+export const diveTimes = (x) => (root) => {
     let iterator = x;
     let newRoot = root;
 
