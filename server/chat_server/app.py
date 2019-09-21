@@ -1,6 +1,8 @@
-from flask import Flask, request, Response, make_response
+from flask import Flask, request, make_response
 from flask_cors import CORS
-from server.chat_server.model.user import user_model
+from server.chat_server.model.user.user_model import user_model
+from server.chat_server.model.message.message_model import message_model
+
 
 def create_app(config):
     appa = Flask(__name__)
@@ -9,15 +11,13 @@ def create_app(config):
 
 
 app = create_app('')
-messages = [{"id": 1, "text": "the text"}, {"id": 2, "text": "the text"}]
-
 
 @app.route('/api/users', methods=['POST'])
 def login():
     try:
         user_name = request.json['userName']
         user = user_model.add(user_name)
-        print('aasdasd',user)
+        print('aasdasd', user)
         status_code = 200
     except (TypeError, KeyError):
         user = None
@@ -28,13 +28,14 @@ def login():
 
 @app.route('/api/messages', methods=['GET'])
 def get_messages():
-    numbers = request.args.get('numbers', 0)
-    print(numbers)
-    status_code = 200
-
-    body = {
-        "messages": messages,
-    }
+    try:
+        body = {
+            "messages": message_model.get_all(),
+        }
+        status_code = 200
+    except:
+        status_code = 400
+        body = None
 
     return make_response(body, status_code)
 
