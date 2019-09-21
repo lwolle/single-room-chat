@@ -1,7 +1,6 @@
 from flask import Flask, request, make_response
 from flask_cors import CORS
-from server.chat_server.model.user.user_model import user_model
-from server.chat_server.model.message.message_model import message_model
+from message_service.model.message_model import message_model
 
 
 def create_app(config):
@@ -11,19 +10,6 @@ def create_app(config):
 
 
 app = create_app('')
-
-@app.route('/api/users', methods=['POST'])
-def login():
-    try:
-        user_name = request.json['userName']
-        user = user_model.add(user_name)
-        print('aasdasd', user)
-        status_code = 200
-    except (TypeError, KeyError):
-        user = None
-        status_code = 400
-
-    return make_response(user, status_code)
 
 
 @app.route('/api/messages', methods=['GET'])
@@ -56,15 +42,16 @@ def add_message():
 @app.route('/api/messages/search', methods=['POST'])
 def search_message():
     try:
-        # @todo add validation
         query = request.json['query']
+        body = {
+            "messages": message_model.search(query),
+        }
         status_code = 200
-        messages = message_model.search(query)
     except (TypeError, KeyError):
-        messages = None
+        body = None
         status_code = 400
 
-    return make_response(messages, status_code)
+    return make_response(body, status_code)
 
 
 if __name__ == '__main__':
