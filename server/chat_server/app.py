@@ -1,6 +1,8 @@
-from flask import Flask, request, Response, make_response
+from flask import Flask, request, make_response
 from flask_cors import CORS
-from server.chat_server.model.user import user_model
+from server.chat_server.model.user.user_model import user_model
+from server.chat_server.model.message.message_model import message_model
+
 
 def create_app(config):
     appa = Flask(__name__)
@@ -9,15 +11,13 @@ def create_app(config):
 
 
 app = create_app('')
-messages = [{"id": 1, "text": "the text"}, {"id": 2, "text": "the text"}]
-
 
 @app.route('/api/users', methods=['POST'])
 def login():
     try:
         user_name = request.json['userName']
         user = user_model.add(user_name)
-        print('aasdasd',user)
+        print('aasdasd', user)
         status_code = 200
     except (TypeError, KeyError):
         user = None
@@ -28,13 +28,14 @@ def login():
 
 @app.route('/api/messages', methods=['GET'])
 def get_messages():
-    numbers = request.args.get('numbers', 0)
-    print(numbers)
-    status_code = 200
-
-    body = {
-        "messages": messages,
-    }
+    try:
+        body = {
+            "messages": message_model.get_all(),
+        }
+        status_code = 200
+    except:
+        status_code = 400
+        body = None
 
     return make_response(body, status_code)
 
@@ -42,21 +43,28 @@ def get_messages():
 @app.route('/api/messages', methods=['POST'])
 def add_message():
     try:
-        creator_id = request.json['creatorId']
-        content = request.json['text']
         status_code = 200
+        # @todo add validation
+        message = message_model.add(request.json)
     except (TypeError, KeyError):
-        creator_id = None
-        content = None
         status_code = 400
-    # @todo add validation that user needs to exist
+        message = None
 
-    body = {
-        "text": content,
-        "creatorId": creator_id
-    }
+    return make_response(message, status_code)
 
-    return make_response(body, status_code)
+
+@app.route('/api/messages/search', methods=['POST'])
+def search_message():
+    try:
+        # @todo add validation
+        query = request.json['query']
+        status_code = 200
+        messages = message_model.search(query)
+    except (TypeError, KeyError):
+        messages = None
+        status_code = 400
+
+    return make_response(messages, status_code)
 
 
 if __name__ == '__main__':
