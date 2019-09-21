@@ -43,21 +43,28 @@ def get_messages():
 @app.route('/api/messages', methods=['POST'])
 def add_message():
     try:
-        creator_id = request.json['creatorId']
-        content = request.json['text']
         status_code = 200
+        # @todo add validation
+        message = message_model.add(request.json)
     except (TypeError, KeyError):
-        creator_id = None
-        content = None
         status_code = 400
-    # @todo add validation that user needs to exist
+        message = None
 
-    body = {
-        "text": content,
-        "creatorId": creator_id
-    }
+    return make_response(message, status_code)
 
-    return make_response(body, status_code)
+
+@app.route('/api/messages/search', methods=['POST'])
+def search_message():
+    try:
+        # @todo add validation
+        query = request.json['query']
+        status_code = 200
+        messages = message_model.search(query)
+    except (TypeError, KeyError):
+        messages = None
+        status_code = 400
+
+    return make_response(messages, status_code)
 
 
 if __name__ == '__main__':
