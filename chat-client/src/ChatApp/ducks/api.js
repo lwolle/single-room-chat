@@ -5,19 +5,20 @@ import {
 } from '../config/api';
 
 export const api = {
-    login: async (userName) => {
-        return axios({
-            method: 'post',
-            url: API_LOGIN,
-            data: {
-                userName,
-            },
-        });
-    },
-    getMessages: async () => {
-        return axios({
-            method: 'GET',
-            url: API_MESSAGES,
-        });
-    },
+    login: (userName) => axios({
+        method: 'post',
+        url: API_LOGIN,
+        data: {
+            userName,
+        },
+    }),
+    getMessages: () => axios({
+        method: 'GET',
+        url: API_MESSAGES,
+    }),
+    sendMessage: (message) => axios({
+        method: 'POST',
+        url: API_MESSAGES,
+        data: message,
+    }),
 };

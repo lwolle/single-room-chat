@@ -5,13 +5,16 @@ const dispatch = jest.fn();
 const fakeApi = {
     login: jest.fn(() => ({
         ok: true,
-        body: {
+        status: 200,
+        data: {
             userId: 'user-id',
+            userName: 'user-name',
         },
     })),
     getMessages: jest.fn(() => ({
         ok: true,
-        body: {
+        status: 200,
+        data: {
             messages: [
                 {
                     id: 1,

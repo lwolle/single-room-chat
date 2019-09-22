@@ -1,8 +1,8 @@
 import React from 'react';
+import { shallow } from 'enzyme';
 import { Chat } from './Chat';
 import { Textarea } from '../../core/Textarea/Textarea';
 import { Button } from '../../core/Button/Button';
-import { shallow } from 'enzyme';
 import { Message } from './Message/Message';
 import { TextareaContainer } from './StyledTextarea';
 

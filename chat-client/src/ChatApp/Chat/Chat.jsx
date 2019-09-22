@@ -3,11 +3,14 @@ import { Message } from './Message/Message';
 import { Layout } from './Layout';
 import { Textarea } from '../../core/Textarea/Textarea';
 import { Button } from '../../core/Button/Button';
-import { messages } from '../config/messages';
+import { messages as uiMessages } from '../config/messages';
 import { TextareaContainer } from './StyledTextarea';
 
 export class Chat extends React.PureComponent {
-    state = { messageText: '' };
+    constructor(props) {
+        super(props);
+        this.state = { messageText: '' };
+    }
 
     handleChange = (event) => {
         this.setState({ messageText: event.currentTarget.value });
@@ -19,19 +22,24 @@ export class Chat extends React.PureComponent {
     };
 
     renderMessages = (messages, userId) => (
-        messages.map(message => (
+        messages.map((message) => (
             <Message
                 key={ message.id }
                 text={ message.text }
                 isMine={ message.creatorId === userId }
-            />))
+            />
+        ))
     );
 
     render() {
+        const {
+            userId,
+            messages,
+        } = this.props;
         return (
-            <React.Fragment>
+            <>
                 <Layout>
-                    { this.renderMessages(this.props.messages, this.props.userId) }
+                    { this.renderMessages(messages, userId) }
                     <TextareaContainer>
                         <Textarea
                             onChange={ this.handleChange }
@@ -39,10 +47,10 @@ export class Chat extends React.PureComponent {
                         />
                     </TextareaContainer>
                     <Button onClick={ this.handleSubmit }>
-                        { messages['chat.submitbutton.label'] }
+                        { uiMessages['chat.submitbutton.label'] }
                     </Button>
                 </Layout>
-            </React.Fragment>
+            </>
         );
     }
 }

@@ -4,6 +4,7 @@ import { mockStore } from '../../testHelper/mockStore';
 import { ChatConnected } from './Chat.connected';
 import { diveTimes } from '../../testHelper/diveTimes';
 import { sendMessage } from '../ducks/sendMesage';
+import { mockApi } from '../../testHelper/mockApi';
 
 describe('Chat/ChatConnected', () => {
     describe('should pick from state', () => {
@@ -36,10 +37,11 @@ describe('Chat/ChatConnected', () => {
         });
 
         it('sendMessages', async () => {
+            const api = mockApi('sendMessage');
             const state = {
                 messages: [],
             };
-            const store = mockStore(state);
+            const store = mockStore(state, { api });
 
             const root = diveTimes(1)((
                 shallow(<ChatConnected store={ store } />)
