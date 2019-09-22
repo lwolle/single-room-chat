@@ -16,7 +16,7 @@ describe('ducks/search', () => {
         expect(api.search).toHaveBeenCalledWith(searchTerm);
     });
 
-    it('should dispatch actions', () => {
+    it('should dispatch actions', async () => {
         const searchTerm = 'search-term';
         const messages = [{ text: 'text' }];
         const api = mockApi('search', {
@@ -27,7 +27,7 @@ describe('ducks/search', () => {
         });
         const store = mockStore({}, { api });
 
-        store.dispatch(search(searchTerm));
+        await store.dispatch(search(searchTerm));
 
         expect(store.getActions()).toEqual([
             {

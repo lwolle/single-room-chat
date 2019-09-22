@@ -11,6 +11,7 @@ describe('Chat/ChatConnected', () => {
         it('userId', () => {
             const state = {
                 userId: 'id',
+                searchResult: [],
             };
             const store = mockStore(state);
 
@@ -23,6 +24,7 @@ describe('Chat/ChatConnected', () => {
 
         it('messages', () => {
             const state = {
+                searchResult: [],
                 messages: [
                     'message1', 'message2',
                 ],
@@ -39,6 +41,7 @@ describe('Chat/ChatConnected', () => {
         it('sendMessages', async () => {
             const api = mockApi('sendMessage');
             const state = {
+                searchResult: [],
                 messages: [],
             };
             const store = mockStore(state, { api });
