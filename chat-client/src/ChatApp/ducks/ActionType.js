@@ -3,4 +3,5 @@ export const ActionType = {
     SET_MESSAGES: 'chat/SET_MESSAGES',
     SET_SEARCH_RESULT: 'chat/SET_SEARCH_RESULT',
     START_SEARCH: 'chat/START_SEARCH',
+    SET_WS_CONNECTED: 'chat/SET_WS_CONNECTED',
 };

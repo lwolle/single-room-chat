@@ -22,9 +22,12 @@ export class Chat extends React.PureComponent {
         this.setState({ messageText: event.currentTarget.value });
     };
 
-    handleSubmit = () => {
-        this.props.sendMessage(this.state.messageText);
-        this.setState({ messageText: '' });
+    handleSubmit = async () => {
+        const result = await this.props.sendMessage(this.state.messageText);
+
+        if (result) {
+            this.setState({ messageText: '' });
+        }
     };
 
     renderMessages = (messages, userId) => (

@@ -1,4 +1,3 @@
-import { setMessages } from './setMessages';
 import { ResponseStatusHandler } from './ResponseStatusHandler';
 
 export const sendMessage = (messageText) => async (dispatch, getState, { api }) => {
@@ -12,8 +11,8 @@ export const sendMessage = (messageText) => async (dispatch, getState, { api }) 
     const response = await api.sendMessage(messageDraft);
 
     if (ResponseStatusHandler.isOk(response.status)) {
-        const { message } = response.data;
-        const messages = [...getState().messages, message];
-        dispatch(setMessages(messages));
+        return true;
     }
+
+    return false;
 };

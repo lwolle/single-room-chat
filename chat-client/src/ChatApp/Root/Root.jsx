@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import { createGlobalStyle } from 'styled-components';
 import { store } from '../ducks/store/store';
 import { AppConnected } from './App.connected';
+import { ConfigureConnected } from './Configure.connected';
 
 const GlobalStyle = createGlobalStyle`
     html {
@@ -22,7 +23,9 @@ const GlobalStyle = createGlobalStyle`
 
 export const Root = () => (
     <Provider store={ store }>
-        <GlobalStyle />
-        <AppConnected />
+        <ConfigureConnected>
+            <GlobalStyle />
+            <AppConnected />
+        </ConfigureConnected>
     </Provider>
 );
