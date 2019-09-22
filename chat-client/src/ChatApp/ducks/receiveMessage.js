@@ -7,6 +7,7 @@ export const receiveMessage = (receivedMessage) => (
         id: receivedMessage.id,
         text: receivedMessage.text,
         creatorId: receivedMessage.creatorId,
+        creatorName: receivedMessage.creatorName,
     };
 
     const messages = [...getState().messages, message];

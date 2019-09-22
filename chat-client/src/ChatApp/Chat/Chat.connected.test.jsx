@@ -22,6 +22,20 @@ describe('Chat/ChatConnected', () => {
             expect(root).toHaveProp('userId', state.userId);
         });
 
+        it('connected', () => {
+            const state = {
+                connected: 'not-connected',
+                searchResult: [],
+            };
+            const store = mockStore(state);
+
+            const root = diveTimes(1)((
+                shallow(<ChatConnected store={ store } />)
+            ));
+
+            expect(root).toHaveProp('connected', state.connected);
+        });
+
         it('messages', () => {
             const state = {
                 searchResult: [],

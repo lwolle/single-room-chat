@@ -1,11 +1,12 @@
 import { ResponseStatusHandler } from './ResponseStatusHandler';
 
 export const sendMessage = (messageText) => async (dispatch, getState, { api }) => {
-    const { userId } = getState();
+    const { userId, userName } = getState();
 
     const messageDraft = {
         text: messageText,
         creatorId: userId,
+        creatorName: userName,
     };
 
     const response = await api.sendMessage(messageDraft);

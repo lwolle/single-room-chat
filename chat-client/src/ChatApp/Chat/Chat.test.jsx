@@ -7,6 +7,7 @@ import { Message } from './Message/Message';
 import { StyledTextarea } from './StyledTextarea';
 import { TextareaContainer } from './TextareaContainer';
 import { MessageListContainer } from './MessageListContainer';
+import { OnlineIndicator } from './OnlineIndicator/OnlineIndicator';
 
 describe('src/Chat', () => {
     describe('should render', () => {
@@ -30,6 +31,14 @@ describe('src/Chat', () => {
             const textareaContainer = root.find(TextareaContainer);
 
             expect(textareaContainer).toExist();
+        });
+
+        it('TextareaContainer', () => {
+            const root = shallow(<Chat messages={ [] } connected="not-online" />);
+            const indicator = root.find(OnlineIndicator);
+
+            expect(indicator).toExist();
+            expect(indicator).toHaveProp('online', 'not-online');
         });
 
         it('Button', () => {
@@ -69,8 +78,8 @@ describe('src/Chat', () => {
         it('should be rendered', () => {
             const userId = 'me';
             const messages = [
-                { id: 1, text: 'content', creatorId: 'not-me' },
-                { id: 2, text: 'content2', creatorId: 'me' },
+                { id: 1, text: 'content', creatorId: 'not-me', creatorName: 'name' },
+                { id: 2, text: 'content2', creatorId: 'me', creatorName: 'other-name' },
             ];
             const root = shallow(<Chat userId={ userId } messages={ messages } />);
             const rendererMessages = root.find(Message);
@@ -79,11 +88,13 @@ describe('src/Chat', () => {
             expect(rendererMessages.at(0).props()).toEqual({
                 text: 'content',
                 isMine: false,
+                creatorName: 'name',
             });
 
             expect(rendererMessages.at(1).props()).toEqual({
                 text: 'content2',
                 isMine: true,
+                creatorName: 'other-name',
             });
         });
     });

@@ -11,6 +11,7 @@ import { StyledTextarea } from './StyledTextarea';
 import { MessageListContainer } from './MessageListContainer';
 import { TextareaContainer } from './TextareaContainer';
 import { SearchFieldConnected } from './Search/SearchField.connected';
+import { OnlineIndicator } from './OnlineIndicator/OnlineIndicator';
 
 export class Chat extends React.PureComponent {
     constructor(props) {
@@ -34,6 +35,7 @@ export class Chat extends React.PureComponent {
         messages.map((message) => (
             <Message
                 key={ message.id }
+                creatorName={ message.creatorName }
                 text={ message.text }
                 isMine={ message.creatorId === userId }
             />
@@ -42,6 +44,7 @@ export class Chat extends React.PureComponent {
 
     render() {
         const {
+            connected,
             userId,
             messages,
         } = this.props;
@@ -50,6 +53,7 @@ export class Chat extends React.PureComponent {
                 <Layout>
                     <Inner>
                         <SearchFieldConnected />
+                        <OnlineIndicator online={ connected } />
                         <MessageListContainer>
                             { this.renderMessages(messages, userId) }
                         </MessageListContainer>

@@ -13,6 +13,7 @@ const getMessagesToShow = (state) => {
 const mapStateToProps = (state) => ({
     userId: state.userId,
     messages: getMessagesToShow(state),
+    connected: state.connected,
 });
 
 const mapDispatchToProps = {
