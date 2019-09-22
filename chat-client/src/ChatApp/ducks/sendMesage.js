@@ -1,19 +1,19 @@
 import { setMessages } from './setMessages';
+import { ResponseStatusHandler } from './ResponseStatusHandler';
 
 export const sendMessage = (messageText) => async (dispatch, getState, { api }) => {
-    // const response = await api.login(userName);
-    // if (response.ok) {
-    //     const { userId } = response.body;
+    const userId = getState().userId;
 
-    // const messageResponse = await api.getMessages();
-    // const { messages } = messageResponse.body;
-
-    const message = {
-        id: 123,
-        creatorId: getState().userId,
+    const messageDraft = {
         text: messageText,
+        creatorId: userId,
     };
-    const messages = [...getState().messages, message];
-    dispatch(setMessages(messages));
-    // }
+
+    const response = await api.sendMessage(messageDraft);
+
+    if (ResponseStatusHandler.isOk(response.status)) {
+        const { message } = response.data;
+        const messages = [...getState().messages, message];
+        dispatch(setMessages(messages));
+    }
 };

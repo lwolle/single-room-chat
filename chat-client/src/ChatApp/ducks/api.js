@@ -20,4 +20,11 @@ export const api = {
             url: API_MESSAGES,
         });
     },
+    sendMessage: async (message) => {
+        return axios({
+            method: 'POST',
+            url: API_MESSAGES,
+            data: message,
+        });
+    },
 };
