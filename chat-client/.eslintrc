@@ -48,6 +48,7 @@
       "error",
       4
     ],
+    "react/destructuring-assignment": 0,
     "react/jsx-props-no-spreading": 0,
     "react/prop-types": 0,
     "react/jsx-indent-props": [
@@ -75,8 +76,8 @@
         "order": [
           "static-methods",
           "lifecycle",
-          "render",
-          "everything-else"
+          "everything-else",
+          "render"
         ]
       }
     ],

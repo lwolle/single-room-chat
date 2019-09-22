@@ -8,5 +8,5 @@ export const errorResponse = {
 };
 
 export const mockApi = (method, response = successResponse) => ({
-    [method]: jest.fn(() => successResponse),
+    [method]: jest.fn(() => response),
 });

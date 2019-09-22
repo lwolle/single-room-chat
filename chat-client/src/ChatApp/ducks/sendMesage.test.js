@@ -6,7 +6,6 @@ import {
     errorResponse,
 } from '../../testHelper/mockApi';
 
-
 describe('ducks/sendMessage', () => {
     const message = 'the-message';
 

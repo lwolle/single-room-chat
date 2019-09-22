@@ -2,7 +2,7 @@ import { setMessages } from './setMessages';
 import { ResponseStatusHandler } from './ResponseStatusHandler';
 
 export const sendMessage = (messageText) => async (dispatch, getState, { api }) => {
-    const userId = getState().userId;
+    const { userId } = getState();
 
     const messageDraft = {
         text: messageText,
