@@ -2,7 +2,8 @@ import axios from 'axios';
 import {
     API_LOGIN,
     API_MESSAGES,
-} from '../config/api';
+    API_SEARCH_MESSAGES,
+} from '../../config/api';
 
 export const api = {
     login: (userName) => axios({
@@ -20,5 +21,12 @@ export const api = {
         method: 'POST',
         url: API_MESSAGES,
         data: message,
+    }),
+    search: (searchTerm) => axios({
+        method: 'POST',
+        url: API_SEARCH_MESSAGES,
+        data: {
+            query: searchTerm,
+        },
     }),
 };

@@ -10,6 +10,7 @@ describe('ducks/rootReducer', () => {
                 userId: '',
                 userName: '',
                 messages: [],
+                searchResult: [],
             });
         });
     });

@@ -15,7 +15,7 @@ describe('Chat/Message/Content', () => {
     it('should render variant', () => {
         const root = mount(<Content isMine />);
 
-        expect(root).toHaveStyleRule('background', 'rgb(255,255,255)');
+        expect(root).toHaveStyleRule('background', 'rgb(180,231,250)');
         expect(root).toHaveStyleRule('margin-left', 'auto');
         expect(root).toHaveStyleRule('margin-right', 'unset');
         expect(root).toHaveStyleRule('text-align', 'right');

@@ -1,5 +1,5 @@
 import { ActionType } from './ActionType';
-import { rootReducer } from './rootReducer';
+import { rootReducer } from './store/rootReducer';
 import { setMessages, reducer } from './setMessages';
 
 describe('ducks/setMessages', () => {

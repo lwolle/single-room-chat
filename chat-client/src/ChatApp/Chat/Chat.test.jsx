@@ -4,23 +4,47 @@ import { Chat } from './Chat';
 import { Textarea } from '../../core/Textarea/Textarea';
 import { Button } from '../../core/Button/Button';
 import { Message } from './Message/Message';
-import { TextareaContainer } from './StyledTextarea';
+import { StyledTextarea } from './StyledTextarea';
+import { TextareaContainer } from './TextareaContainer';
+import { MessageListContainer } from './MessageListContainer';
 
 describe('src/Chat', () => {
-    it('Textarea should be rendered', () => {
-        const root = shallow(<Chat messages={ [] } />);
-        const textarea = root.find(Textarea);
-        const textareaContainer = root.find(TextareaContainer);
+    describe('should render', () => {
+        it('Textarea', () => {
+            const root = shallow(<Chat messages={ [] } />);
+            const textarea = root.find(Textarea);
 
-        expect(textarea).toExist();
-        expect(textareaContainer).toExist();
-    });
+            expect(textarea).toHaveProp('resize', 'none');
+            expect(textarea).toExist();
+        });
 
-    it('Button should be rendered', () => {
-        const root = shallow(<Chat messages={ [] } />);
-        const button = root.find(Button);
+        it('StyledTextarea', () => {
+            const root = shallow(<Chat messages={ [] } />);
+            const textareaContainer = root.find(StyledTextarea);
 
-        expect(button).toExist();
+            expect(textareaContainer).toExist();
+        });
+
+        it('TextareaContainer', () => {
+            const root = shallow(<Chat messages={ [] } />);
+            const textareaContainer = root.find(TextareaContainer);
+
+            expect(textareaContainer).toExist();
+        });
+
+        it('Button', () => {
+            const root = shallow(<Chat messages={ [] } />);
+            const button = root.find(Button);
+
+            expect(button).toExist();
+        });
+
+        it('MessageListContainer', () => {
+            const root = shallow(<Chat messages={ [] } />);
+            const container = root.find(MessageListContainer);
+
+            expect(container).toExist();
+        });
     });
 
     it('should update onChange', () => {
