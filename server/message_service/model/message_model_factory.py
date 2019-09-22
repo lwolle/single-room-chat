@@ -22,7 +22,7 @@ class MessageModel:
         })
 
         return {
-            "id": str(insert_result['inserted_id']),
+            "id": str(insert_result.inserted_id),
             "text": message['text'],
             "creatorId": message['creatorId'],
         }
