@@ -2,7 +2,7 @@ import axios from 'axios';
 import {
     API_MESSAGES,
     API_LOGIN,
-} from '../config/api';
+} from '../../config/api';
 import { api } from './api';
 
 jest.mock('axios');

@@ -1,12 +1,16 @@
 import React from 'react';
 import { Message } from './Message/Message';
-import { Layout } from './Layout';
+import {
+    Layout,
+    Inner,
+} from './Layout';
 import { Textarea } from '../../core/Textarea/Textarea';
 import { Button } from '../../core/Button/Button';
 import { messages as uiMessages } from '../config/messages';
 import { StyledTextarea } from './StyledTextarea';
 import { MessageListContainer } from './MessageListContainer';
 import { TextareaContainer } from './TextareaContainer';
+import { SearchFieldConnected } from './Search/SearchField.connected';
 
 export class Chat extends React.PureComponent {
     constructor(props) {
@@ -41,20 +45,24 @@ export class Chat extends React.PureComponent {
         return (
             <>
                 <Layout>
-                    <MessageListContainer>
-                        { this.renderMessages(messages, userId) }
-                    </MessageListContainer>
-                    <TextareaContainer>
-                        <StyledTextarea>
-                            <Textarea
-                                onChange={ this.handleChange }
-                                value={ this.state.messageText }
-                            />
-                        </StyledTextarea>
-                        <Button onClick={ this.handleSubmit }>
-                            { uiMessages['chat.submitbutton.label'] }
-                        </Button>
-                    </TextareaContainer>
+                    <Inner>
+                        <SearchFieldConnected />
+                        <MessageListContainer>
+                            { this.renderMessages(messages, userId) }
+                        </MessageListContainer>
+                        <TextareaContainer>
+                            <StyledTextarea>
+                                <Textarea
+                                    resize="none"
+                                    onChange={ this.handleChange }
+                                    value={ this.state.messageText }
+                                />
+                            </StyledTextarea>
+                            <Button onClick={ this.handleSubmit }>
+                                { uiMessages['chat.submitbutton.label'] }
+                            </Button>
+                        </TextareaContainer>
+                    </Inner>
                 </Layout>
             </>
         );

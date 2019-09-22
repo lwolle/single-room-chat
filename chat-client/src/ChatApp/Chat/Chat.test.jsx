@@ -14,6 +14,7 @@ describe('src/Chat', () => {
             const root = shallow(<Chat messages={ [] } />);
             const textarea = root.find(Textarea);
 
+            expect(textarea).toHaveProp('resize', 'none');
             expect(textarea).toExist();
         });
 
