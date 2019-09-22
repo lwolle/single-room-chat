@@ -13,6 +13,7 @@ describe('ducks/sendMessage', () => {
             const api = mockApi('sendMessage');
             const state = {
                 userId: 'user-id',
+                userName: 'user-name',
                 messages: [],
             };
             const store = mockStore(state, { api });
@@ -20,6 +21,7 @@ describe('ducks/sendMessage', () => {
 
             expect(api.sendMessage).toHaveBeenCalledWith({
                 creatorId: 'user-id',
+                creatorName: 'user-name',
                 text: message,
             });
 
