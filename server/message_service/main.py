@@ -80,9 +80,3 @@ def disconnect(sid):
 
 if __name__ == '__main__':
     app.run(threaded=True, host='localhost', port='8002')
-
-# if __name__ == '__main__':
-#     script_name = __file__
-#     print("run:\n"
-#           "FLASK_APP={} python -m flask run --port 8000 --host 0.0.0.0".format(script_name))
-#     exit(1)
