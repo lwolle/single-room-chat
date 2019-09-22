@@ -1,7 +1,7 @@
 # import os
-# from chat_server.app import app, messages
+# from message_service.app import app, messages
 # import tempfile
-# from chat_server.status_codes import status_codes
+# from message_service.status_codes import status_codes
 # import pytest
 #
 #
