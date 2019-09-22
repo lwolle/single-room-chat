@@ -33,18 +33,21 @@ def test_add(mocker):
     message = {
         "text": 'the-text',
         "creatorId": 'the-creator-id',
+        "creatorName": 'the-creator-name',
     }
 
     result = message_model.add(message)
     mock['insert_stub'].assert_called_once_with({
         "text": 'the-text',
         "creator_id": 'the-creator-id',
+        "creator_name": 'the-creator-name',
     })
 
     assert result == {
         "id": "stubbed-id",
         "text": 'the-text',
         "creatorId": 'the-creator-id',
+        "creatorName": 'the-creator-name',
     }
 
 
@@ -54,7 +57,7 @@ def test_get_all(mocker):
     message_model = MessageModel(mock['mock_db'])
 
     message_model.get_all()
-    mock['find_stub'].assert_called_once_with({}, {'id': 1, "text": 1, "creator_id": 1})
+    mock['find_stub'].assert_called_once_with({}, {'id': 1, "text": 1, "creator_id": 1, "creator_name": 1})
 
 
 def test_search(mocker):
@@ -64,4 +67,4 @@ def test_search(mocker):
     search_term = 'search-term'
     query = {"$text": {"$search": search_term}}
     message_model.search(search_term)
-    mock['find_stub'].assert_called_once_with(query, {'id': 1, "text": 1, "creator_id": 1})
+    mock['find_stub'].assert_called_once_with(query, {'id': 1, "text": 1, "creator_id": 1, "creator_name": 1})

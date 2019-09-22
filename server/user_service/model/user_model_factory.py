@@ -7,8 +7,6 @@ class UserModel:
             "name": user_name
         })
 
-        print("userId", str(insert.inserted_id))
-
         return {
             "userName": user_name,
             "userId": str(insert.inserted_id)
