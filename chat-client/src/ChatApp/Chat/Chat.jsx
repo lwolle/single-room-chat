@@ -4,7 +4,9 @@ import { Layout } from './Layout';
 import { Textarea } from '../../core/Textarea/Textarea';
 import { Button } from '../../core/Button/Button';
 import { messages as uiMessages } from '../config/messages';
-import { TextareaContainer } from './StyledTextarea';
+import { StyledTextarea } from './StyledTextarea';
+import { MessageListContainer } from './MessageListContainer';
+import { TextareaContainer } from './TextareaContainer';
 
 export class Chat extends React.PureComponent {
     constructor(props) {
@@ -39,16 +41,20 @@ export class Chat extends React.PureComponent {
         return (
             <>
                 <Layout>
-                    { this.renderMessages(messages, userId) }
+                    <MessageListContainer>
+                        { this.renderMessages(messages, userId) }
+                    </MessageListContainer>
                     <TextareaContainer>
-                        <Textarea
-                            onChange={ this.handleChange }
-                            value={ this.state.messageText }
-                        />
+                        <StyledTextarea>
+                            <Textarea
+                                onChange={ this.handleChange }
+                                value={ this.state.messageText }
+                            />
+                        </StyledTextarea>
+                        <Button onClick={ this.handleSubmit }>
+                            { uiMessages['chat.submitbutton.label'] }
+                        </Button>
                     </TextareaContainer>
-                    <Button onClick={ this.handleSubmit }>
-                        { uiMessages['chat.submitbutton.label'] }
-                    </Button>
                 </Layout>
             </>
         );
