@@ -8,8 +8,4 @@ export const FlexRow = styled.div`
    padding: 0 20px;
    height: 80px;
    box-sizing: border-box;
-`
-
-
-
-
+`;

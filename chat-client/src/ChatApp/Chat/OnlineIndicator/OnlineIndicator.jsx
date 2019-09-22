@@ -1,7 +1,7 @@
-import { FlexRow } from './FlexRow';
 import React from 'react';
-import { ConnectionIcon } from './ConnectionIcon';
 import { Typography } from '@material-ui/core';
+import { FlexRow } from './FlexRow';
+import { ConnectionIcon } from './ConnectionIcon';
 
 export const OnlineIndicator = ({ online }) => (
     <FlexRow>
