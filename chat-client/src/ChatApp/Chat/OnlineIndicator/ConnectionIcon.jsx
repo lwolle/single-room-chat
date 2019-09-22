@@ -5,7 +5,7 @@ import { theme } from '../../../core/theme';
 
 const useStyles = makeStyles(() => ({
     root: {
-        color: props => props.online ? theme.color.online : theme.color.offline,
+        color: (props) => (props.online ? theme.color.online : theme.color.offline),
         marginRight: 30,
     },
 }));

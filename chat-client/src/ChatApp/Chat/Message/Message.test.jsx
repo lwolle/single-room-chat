@@ -1,10 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { Typography } from '@material-ui/core';
+import Avatar from '@material-ui/core/Avatar';
 import { Message } from './Message';
 import { Container } from './Container';
 import { Content } from './Content';
-import { Typography } from '@material-ui/core';
-import Avatar from '@material-ui/core/Avatar';
 
 describe('Chat/Message', () => {
     describe('should render', () => {
@@ -34,7 +34,6 @@ describe('Chat/Message', () => {
             expect(content).toExist();
             expect(content).toHaveProp('isMine', true);
         });
-
 
         it('Typography', () => {
             const root = shallow((

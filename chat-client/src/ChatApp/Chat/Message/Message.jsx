@@ -1,14 +1,14 @@
 import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
-import { Content } from './Content';
-import { Container } from './Container';
 import { Typography } from '@material-ui/core';
 import ColorHash from 'color-hash';
 import { makeStyles } from '@material-ui/styles';
+import { Content } from './Content';
+import { Container } from './Container';
 
 const useStyles = makeStyles({
     avatar: {
-        color: props => props.color,
+        color: (props) => props.color,
         margin: '0 15px',
     },
 });
