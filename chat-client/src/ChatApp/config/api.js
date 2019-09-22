@@ -1,6 +1,8 @@
 const USER_SERVICE = 'http://127.0.0.1:8001/api';
-const MESSAGE_SERVICE = 'http://127.0.0.1:8000/api';
+const MESSAGE_SERVICE = 'http://127.0.0.1:8002/api';
+const SOCKET_URL = 'http://localhost:8002';
 
 export const API_LOGIN = `${ USER_SERVICE }/users`;
 export const API_MESSAGES = `${ MESSAGE_SERVICE }/messages`;
 export const API_SEARCH_MESSAGES = `${ MESSAGE_SERVICE }/messages/search`;
+export const API_WS = `${ SOCKET_URL }`;

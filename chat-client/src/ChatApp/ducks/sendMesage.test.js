@@ -1,4 +1,3 @@
-import { ActionType } from './ActionType';
 import { sendMessage } from './sendMesage';
 import { mockStore } from '../../testHelper/mockStore';
 import {
@@ -17,18 +16,14 @@ describe('ducks/sendMessage', () => {
                 messages: [],
             };
             const store = mockStore(state, { api });
-            const expected = [{
-                type: ActionType.SET_MESSAGES,
-                messages: expect.any(Array),
-            }];
+            const result = await store.dispatch(sendMessage(message));
 
-            await store.dispatch(sendMessage(message));
             expect(api.sendMessage).toHaveBeenCalledWith({
                 creatorId: 'user-id',
                 text: message,
             });
-            const actions = store.getActions();
-            expect(actions).toEqual(expected);
+
+            expect(result).toEqual(true);
         });
 
         describe('error', () => {
@@ -38,12 +33,9 @@ describe('ducks/sendMessage', () => {
                     userId: 'user-id',
                 };
                 const store = mockStore(state, { api });
-                const expected = [];
+                const result = await store.dispatch(sendMessage(message));
 
-                await store.dispatch(sendMessage(message));
-
-                const actions = store.getActions();
-                expect(actions).toEqual(expected);
+                expect(result).toEqual(false);
             });
         });
     });
