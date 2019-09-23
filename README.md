@@ -50,6 +50,9 @@
 ### Run
 - use python `>= 3.6`
 - install the dependencies `pip install -r requirements.txt`
+- start mongodb in a container
+    - message_service database: `docker run -d -p 27017:27017 mongo` 
+    - user_service database: `docker run -d -p 27018:27017 mongo`
 - run the *micro-services*
     - message_service
         - `cd server/message_service`
@@ -61,6 +64,5 @@
 ### Vision
 - proper dockerization of the services
 - proper deployment of the backend. Currently only development mode is supported.
-- provide database instances for each service instead of sharing one instance
 - provide an api gateway to avoid hard-coding the ports into the client application
 - use jwts for authentication?
