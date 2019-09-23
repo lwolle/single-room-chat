@@ -5,24 +5,27 @@ def createMockDb(mocker):
     insert_stub = mocker.stub(name='insert_one')
     find_stub = mocker.stub(name='find_all')
 
+    class InsertResult:
+        @property
+        def inserted_id(self):
+            return 'stubbed-id'
+
     class MockDB:
-        @staticmethod
-        def insert_one(message):
+        def insert_one(self, message):
             insert_stub(message)
 
-            return {
-                "inserted_id": "stubbed-id"
-            }
+            return InsertResult()
 
-        @staticmethod
-        def find(query, fields):
+        def find(self, query, fields):
             find_stub(query, fields)
             return []
 
+    mockdb = MockDB()
+
     return {
-        "mock_db": MockDB,
+        "mock_db": mockdb,
         "insert_stub": insert_stub,
-        "find_stub": find_stub
+        "find_stub": find_stub,
     }
 
 
